@@ -20,7 +20,9 @@ body {
   color: var(--creme);
 }
 
-/* INTRODUÇÃO */
+/* =========================
+   INTRODUÇÃO
+========================= */
 
 .intro-section {
   width: 100%;
@@ -87,7 +89,9 @@ body {
   font-weight: 700;
 }
 
-/* SECÇÃO INTERATIVA */
+/* =========================
+   SECÇÃO INTERATIVA
+========================= */
 
 .timeline-section {
   position: relative;
@@ -107,7 +111,13 @@ body {
   object-fit: cover;
   object-position: center;
 
-  transition: opacity 0.25s ease;
+  transition: opacity 0.4s ease, transform 0.6s ease;
+
+  filter: brightness(0.85) contrast(1.1) saturate(1.1);
+}
+
+.timeline-section:hover .theme-background {
+  transform: scale(1.03);
 }
 
 .timeline-content {
@@ -121,7 +131,9 @@ body {
   flex-direction: column;
 }
 
-/* MENU DOS TEMAS */
+/* =========================
+   MENU DOS TEMAS
+========================= */
 
 .theme-nav {
   width: 100%;
@@ -158,56 +170,30 @@ body {
   justify-content: center;
   text-align: center;
 
-  transition: filter 0.2s ease;
+  transition: filter 0.2s ease, transform 0.2s ease;
 }
 
 .theme-button:hover {
   filter: brightness(1.12);
+  transform: scale(1.03) rotate(180deg);
 }
 
 /* CORES DOS BOTÕES */
 
-.theme-button[data-theme="origem"] {
-  background: #89583f;
-}
+.theme-button[data-theme="origem"] { background: #89583f; }
+.theme-button[data-theme="moeda-metalica"] { background: #e2b45f; }
+.theme-button[data-theme="primeiras-moedas"] { background: #66584e; }
+.theme-button[data-theme="imperio-romano"] { background: #a72e1c; }
+.theme-button[data-theme="papel-moeda"] { background: #814632; }
+.theme-button[data-theme="sistema-financeiro"] { background: #683817; }
+.theme-button[data-theme="banco-amesterdao"] { background: #e8b35a; }
+.theme-button[data-theme="cartoes"] { background: #8a823f; }
+.theme-button[data-theme="bitcoin"] { background: #53544e; }
+.theme-button[data-theme="pagamentos-digitais"] { background: #4d4d5d; }
 
-.theme-button[data-theme="moeda-metalica"] {
-  background: #e2b45f;
-}
-
-.theme-button[data-theme="primeiras-moedas"] {
-  background: #66584e;
-}
-
-.theme-button[data-theme="imperio-romano"] {
-  background: #a72e1c;
-}
-
-.theme-button[data-theme="papel-moeda"] {
-  background: #814632;
-}
-
-.theme-button[data-theme="sistema-financeiro"] {
-  background: #683817;
-}
-
-.theme-button[data-theme="banco-amesterdao"] {
-  background: #e8b35a;
-}
-
-.theme-button[data-theme="cartoes"] {
-  background: #8a823f;
-}
-
-.theme-button[data-theme="bitcoin"] {
-  background: #53544e;
-}
-
-.theme-button[data-theme="pagamentos-digitais"] {
-  background: #4d4d5d;
-}
-
-/* TEMA ABERTO */
+/* =========================
+   PAINEL ABERTO
+========================= */
 
 .open-theme-panel {
   flex: 1;
@@ -253,46 +239,80 @@ body {
     opacity: 0;
     transform: translateX(-12px);
   }
-
   to {
     opacity: 1;
     transform: translateX(0);
   }
 }
 
-/* CAIXA DE TEXTO */
+/* =========================
+   CAIXA DE TEXTO (MELHORADA)
+========================= */
 
 .theme-text-box {
-  width: min(640px, 52vw);
+  width: min(680px, 54vw);
 
   margin-top: auto;
   margin-left: auto;
   margin-right: 3vw;
   margin-bottom: 4vw;
 
-  background: rgba(255, 248, 223, 0.72);
+  background: rgba(255, 248, 223, 0.78);
   color: var(--castanho-escuro);
 
-  padding: clamp(18px, 2vw, 30px);
+  padding: clamp(20px, 2.2vw, 34px);
 
-  font-size: clamp(12px, 1vw, 16px);
-  line-height: 1.35;
-  font-weight: 700;
+  font-size: clamp(13px, 1.05vw, 16px);
+  line-height: 1.55;
+  font-weight: 600;
 
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border-radius: 14px;
+
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  overflow-y: auto;
+  max-height: 70vh;
+
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,0,0,0.3) transparent;
+}
+
+.theme-text-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+}
+
+.theme-text-box::-webkit-scrollbar {
+  width: 6px;
+}
+
+.theme-text-box::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.25);
+  border-radius: 10px;
 }
 
 .theme-text-box p {
-  margin: 0 0 14px;
+  margin: 0 0 16px;
+  opacity: 0.95;
 }
 
 .theme-text-box p:last-child {
   margin-bottom: 0;
 }
 
-/* RESPONSIVO */
+/* =========================
+   RESPONSIVO
+========================= */
 
 @media (max-width: 900px) {
+
   .intro-hero {
     height: 60vh;
   }
@@ -338,19 +358,16 @@ body {
     padding: 8px;
 
     font-size: 13px;
-    line-height: 1.05;
   }
 
   .open-theme-panel {
     min-width: 280px;
     height: 96px;
-
     padding: 14px 18px;
   }
 
   .open-theme-panel h2 {
     font-size: 24px;
-    line-height: 1;
   }
 
   .open-theme-panel p {
@@ -367,6 +384,7 @@ body {
 }
 
 @media (max-width: 560px) {
+
   .intro-hero {
     height: 56vh;
   }
